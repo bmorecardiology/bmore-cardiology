@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | BMore Cardiology</title>
+  <meta name="description" content="Get in touch with BMore Cardiology — patient education from Dr. Jeremy Pollock, MD, FACC, Baltimore cardiologist." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <svg class="nav__logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+        BMore Cardiology
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="topics.html">Topics</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Get in Touch</h1>
+      <p class="subtitle">Have a question about your heart health or this site? We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="contact-layout">
+
+      <div class="contact-info">
+        <h2>BMore Cardiology</h2>
+        <p>This site is a patient education resource from Dr. Jeremy Pollock, MD, FACC — board-certified cardiologist and Medical Director of Cardiology Operations at UM St. Joseph Medical Center in Baltimore, MD.</p>
+        <p>We're currently in development. Use the form to send a message or suggest a topic you'd like covered.</p>
+
+        <div class="contact-disclaimer">
+          <div class="contact-disclaimer__title">⚠️ Educational Purposes Only</div>
+          <p>This website does not provide medical advice, diagnosis, or treatment. The information here is for general educational use only. Always consult your own physician or cardiologist for medical concerns specific to you.</p>
+        </div>
+
+        <div class="contact-emergency">
+          <p>🚨 If you are experiencing chest pain, difficulty breathing, or any other emergency — call <strong>911</strong> immediately. Do not use this form.</p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send a Message</h2>
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first-name" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last-name" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option value="">Select a topic...</option>
+              <option>General Question</option>
+              <option>Topic Suggestion</option>
+              <option>Website Feedback</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+            <p class="form-note">Please do not include personal medical information or health history in this form.</p>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a href="index.html" class="footer__logo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+          BMore Cardiology
+        </a>
+        <nav class="footer__links">
+          <a href="index.html">Home</a>
+          <a href="topics.html">Topics</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer__divider"></div>
+        <p class="footer__copy">© 2026 BMore Cardiology | Dr. Jeremy Pollock, MD, FACC</p>
+        <p class="footer__disclaimer">This website is for educational purposes only and does not constitute medical advice. Always consult your physician for medical concerns. In an emergency, call 911.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
