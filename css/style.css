@@ -1211,3 +1211,199 @@ p:last-child { margin-bottom: 0; }
   .contact-layout { gap: 2rem; }
   .contact-form { padding: 1.5rem; }
 }
+
+/* ============================================
+   Interactive Elements
+   ============================================ */
+
+/* Expandable/Collapsible Toggle */
+.toggle-section {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  background: white;
+}
+
+.toggle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: #f5f5f5;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+  font-weight: 600;
+  color: #1a3a52;
+}
+
+.toggle-header:hover {
+  background: #eeeeee;
+}
+
+.toggle-header.active {
+  background: #e3f2fd;
+  color: #2e86de;
+}
+
+.toggle-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 1.2em;
+}
+
+.toggle-icon.active {
+  transform: rotate(180deg);
+}
+
+.toggle-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 1.25rem;
+}
+
+.toggle-content.active {
+  max-height: 2000px;
+  padding: 1.25rem;
+}
+
+/* Tabs */
+.tabs {
+  margin: 2rem 0;
+}
+
+.tabs-nav {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tab-button:hover {
+  color: #2e86de;
+  background: #f5f5f5;
+}
+
+.tab-button.active {
+  color: #2e86de;
+  border-bottom-color: #2e86de;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Info Cards with Hover Effect */
+.info-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #2e86de;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.info-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+/* Gradient Accents */
+.gradient-text {
+  background: linear-gradient(135deg, #1a3a52 0%, #2e86de 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+/* Smooth animations for diagrams */
+.diagram-svg {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Comparison boxes */
+.comparison-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.comparison-card {
+  padding: 2rem;
+  border-radius: 8px;
+  background: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.comparison-card:hover {
+  border-color: #2e86de;
+  box-shadow: 0 4px 16px rgba(46, 134, 222, 0.15);
+}
+
+.comparison-card.success {
+  background: #e8f5e9;
+  border-color: #4CAF50;
+}
+
+.comparison-card.warning {
+  background: #fff3e0;
+  border-color: #ff9800;
+}
+
+@media (max-width: 768px) {
+  .comparison-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .tabs-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
