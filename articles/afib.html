@@ -48,6 +48,46 @@
           <h2>What Is AFib?</h2>
           <p>Your heart normally beats in a steady, organized rhythm — like a drum keeping perfect time. In atrial fibrillation, the upper chambers of the heart (called the atria) fire off chaotic, disorganized electrical signals. Instead of beating in sync, they quiver rapidly and irregularly.</p>
           <p>The result is an irregular heartbeat that can be too fast, too slow, or just unpredictable. AFib is the most common serious heart rhythm disorder, affecting more than 6 million Americans.</p>
+
+          <!-- Normal vs AFib Comparison Diagram -->
+          <div style="background: white; padding: 30px; border-radius: 12px; margin: 30px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <h3 style="text-align: center; margin-bottom: 30px; color: #1a3a52;">Normal Heartbeat vs AFib</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+              <!-- Normal Heartbeat -->
+              <div style="text-align: center;">
+                <h4 style="color: #388e3c; margin-bottom: 20px;">Normal Heart Rhythm</h4>
+                <svg viewBox="0 0 300 150" style="width: 100%; max-width: 250px; margin: 0 auto; display: block;">
+                  <!-- Heart outline -->
+                  <path d="M 150 30 L 180 60 Q 180 90 150 110 Q 120 90 120 60 Z" fill="#ffcdd2" stroke="#c62828" stroke-width="2"/>
+                  
+                  <!-- Regular pulse line -->
+                  <polyline points="20,80 40,80 50,70 60,90 70,75 80,80 100,80 110,70 120,90 130,75 140,80 160,80" 
+                            stroke="#388e3c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="160" y1="80" x2="280" y2="80" stroke="#388e3c" stroke-width="2" stroke-dasharray="5,5"/>
+                  
+                  <!-- Labels -->
+                  <text x="150" y="135" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Regular & Organized</text>
+                </svg>
+              </div>
+              
+              <!-- AFib -->
+              <div style="text-align: center;">
+                <h4 style="color: #d32f2f; margin-bottom: 20px;">AFib (Irregular)</h4>
+                <svg viewBox="0 0 300 150" style="width: 100%; max-width: 250px; margin: 0 auto; display: block;">
+                  <!-- Heart outline -->
+                  <path d="M 150 30 L 180 60 Q 180 90 150 110 Q 120 90 120 60 Z" fill="#ffcdd2" stroke="#c62828" stroke-width="2"/>
+                  
+                  <!-- Chaotic pulse line -->
+                  <polyline points="20,80 30,70 40,95 50,65 60,85 70,60 80,90 90,55 100,95 110,70 120,80 130,65 140,90 150,60 160,85 170,70 180,75 190,60 200,90 210,65 220,80 230,70 240,85 250,75 260,80 280,80" 
+                            stroke="#d32f2f" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  
+                  <!-- Labels -->
+                  <text x="150" y="135" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Chaotic & Irregular</text>
+                </svg>
+              </div>
+            </div>
+          </div>
           <div class="info-box">
             <p><strong>Important:</strong> AFib itself is rarely immediately life-threatening, but it significantly raises your risk of stroke — up to 5 times the normal risk. That's why getting diagnosed and treated matters.</p>
           </div>
