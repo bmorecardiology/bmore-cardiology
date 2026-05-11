@@ -21,7 +21,6 @@
     z-index: 99999;
     font-family: Arial, sans-serif;
   `;
-  blocker.innerHTML = '<div style="text-align: center; color: white;"><h1>🔒 Access Restricted</h1><p>BMore Cardiology is under compliance review.</p></div>';
   document.documentElement.appendChild(blocker);
   
   // Hide entire body content
@@ -42,11 +41,32 @@
     const password = prompt('🔒 BMore Cardiology\n\nEnter password to access:');
     
     if (password === null) {
-      // User clicked cancel - keep site blocked permanently
-      blocker.innerHTML = '<div style="text-align: center; color: white;"><h1>Access Denied</h1><p>This site is currently under compliance review.</p><p style="font-size: 0.9em; margin-top: 20px;">Please contact the site administrator if you believe this is an error.</p></div>';
+      // User clicked cancel - keep site blocked, show "Access Denied" with retry button
+      blocker.innerHTML = `
+        <div style="text-align: center; color: white;">
+          <h1>🔒 Access Denied</h1>
+          <p>This site is currently under compliance review.</p>
+          <p style="font-size: 0.9em; margin-top: 20px; margin-bottom: 30px;">Please enter the password to access.</p>
+          <button id="retry-btn" style="
+            padding: 12px 30px;
+            font-size: 16px;
+            background: white;
+            color: #1a3a52;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+          " onmouseover="this.style.background='#e8f4f8'; this.style.transform='scale(1.05)';" 
+             onmouseout="this.style.background='white'; this.style.transform='scale(1)';">
+            Try Again
+          </button>
+        </div>
+      `;
+      document.getElementById('retry-btn').addEventListener('click', promptPassword);
       document.body.style.visibility = 'hidden';
       document.body.style.opacity = '0';
-      return; // Exit - do NOT re-prompt
+      return; // Exit - allow retry via button
     }
     
     if (password === CORRECT_PASSWORD) {
