@@ -107,7 +107,7 @@
       blocker.remove();
       document.body.style.visibility = 'visible';
       document.body.style.opacity = '1';
-      document.htmlElement.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
     } else {
       // Wrong password - show error
       errorMsg.style.display = 'block';
