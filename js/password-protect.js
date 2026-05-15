@@ -7,8 +7,14 @@
   
   // Check if already authenticated
   if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+    console.log('User already authenticated');
     return; // User already authenticated, allow access
   }
+  
+  console.log('Password protection active');
+  
+  // Hide body immediately
+  document.body.style.display = 'none';
   
   // Create blocking overlay
   const blocker = document.createElement('div');
@@ -37,17 +43,20 @@
       text-align: center;
       max-width: 400px;
       width: 90%;
+      box-sizing: border-box;
     ">
       <div style="font-size: 48px; margin-bottom: 20px;">🔒</div>
       <h1 style="
         color: #1a3a52;
         margin: 0 0 10px 0;
         font-size: 28px;
+        font-family: Arial, sans-serif;
       ">BMore Cardiology</h1>
       <p style="
         color: #666;
         margin: 0 0 30px 0;
         font-size: 14px;
+        font-family: Arial, sans-serif;
       ">This site is under compliance review.<br>Please enter the password to access.</p>
       
       <input type="password" id="password-input" placeholder="Enter password" style="
@@ -59,7 +68,8 @@
         margin-bottom: 20px;
         box-sizing: border-box;
         transition: border-color 0.3s ease;
-      " onkeypress="if(event.key==='Enter') document.getElementById('password-submit').click();" />
+        font-family: Arial, sans-serif;
+      " />
       
       <button id="password-submit" style="
         width: 100%;
@@ -72,44 +82,41 @@
         cursor: pointer;
         font-weight: bold;
         transition: all 0.3s ease;
-      " onmouseover="this.style.background='#1a5cb0';" onmouseout="this.style.background='#2e86de';">
+        font-family: Arial, sans-serif;
+      ">
         Unlock Site
       </button>
       
       <p id="error-msg" style="
         color: #c7254e;
         font-size: 13px;
-        margin-top: 15px;
+        margin: 15px 0 0 0;
         display: none;
+        font-family: Arial, sans-serif;
       ">❌ Incorrect password. Please try again.</p>
     </div>
   `;
   
   blocker.innerHTML = modalHTML;
-  
-  // Hide entire body content
-  document.documentElement.style.overflow = 'hidden';
-  document.body.style.visibility = 'hidden';
-  document.body.style.opacity = '0';
-  
-  // Add blocker to page
-  document.documentElement.appendChild(blocker);
+  document.body.appendChild(blocker);
   
   // Handle password submission
   function checkPassword() {
     const passwordInput = document.getElementById('password-input');
     const errorMsg = document.getElementById('error-msg');
-    const password = passwordInput.value;
+    const password = passwordInput.value.trim();
+    
+    console.log('Password submitted:', password);
     
     if (password === CORRECT_PASSWORD) {
       // Correct password - unlock site
+      console.log('Password correct - unlocking');
       sessionStorage.setItem(SESSION_KEY, 'true');
-      blocker.remove();
-      document.body.style.visibility = 'visible';
-      document.body.style.opacity = '1';
-      document.documentElement.style.overflow = 'auto';
+      blocker.style.display = 'none';
+      document.body.style.display = 'block';
     } else {
       // Wrong password - show error
+      console.log('Password incorrect');
       errorMsg.style.display = 'block';
       passwordInput.value = '';
       passwordInput.focus();
@@ -119,18 +126,40 @@
     }
   }
   
-  // Wait for button to be in DOM, then attach event listener
-  setTimeout(function() {
+  // Attach event listeners once page is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      const submitBtn = document.getElementById('password-submit');
+      const passwordInput = document.getElementById('password-input');
+      
+      if (submitBtn) {
+        submitBtn.addEventListener('click', checkPassword);
+      }
+      if (passwordInput) {
+        passwordInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            checkPassword();
+          }
+        });
+        passwordInput.focus();
+      }
+    });
+  } else {
+    // DOM already loaded
     const submitBtn = document.getElementById('password-submit');
     const passwordInput = document.getElementById('password-input');
     
     if (submitBtn) {
       submitBtn.addEventListener('click', checkPassword);
     }
-    
     if (passwordInput) {
+      passwordInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          checkPassword();
+        }
+      });
       passwordInput.focus();
     }
-  }, 100);
+  }
   
 })();
