@@ -142,6 +142,6 @@
   
   // Focus input
   setTimeout(() => {
-    document.getElementById('bmore-password-input').focus();
+    document.getElementById('bmore-password-input')?.focus();
   }, 100);
 })();
