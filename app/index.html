@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Cardiology - Heart Failure Clinic</title>
     <script src="../js/password-protect.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         * {
             margin: 0;
@@ -16,12 +17,23 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: calc(var(--nav-height) + 20px) 0 0;
         }
 
-        .container {
-            max-width: 1200px;
+        .tracker {
+            max-width: 1240px;
             margin: 0 auto;
+            padding: 0 20px 20px;
+            line-height: normal;
+        }
+
+        .tracker h1, .tracker h2 {
+            color: inherit;
+            line-height: normal;
+        }
+
+        .tracker p {
+            margin: 0;
         }
 
         .header {
@@ -74,7 +86,7 @@
             border-color: #2196F3;
         }
 
-        button {
+        :where(.tracker) button {
             background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
             color: white;
             padding: 14px 30px;
@@ -87,7 +99,7 @@
             transition: all 0.3s;
         }
 
-        button:hover {
+        :where(.tracker) button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(33, 150, 243, 0.3);
         }
@@ -193,7 +205,29 @@
     </style>
 </head>
 <body>
-    <div class="container">
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <svg class="nav__logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+        </svg>
+        BMore Cardiology
+      </a>
+      <ul class="nav__links" id="primary-navigation">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../topics.html">Topics</a></li>
+        <li><a href="../cardiac-longevity.html">Cardiac Longevity</a></li>
+        <li><a href="../thoughts-of-the-week.html">Thoughts</a></li>
+        <li><a href="../app/" class="active" aria-current="page">App</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+    <div class="tracker">
         <div class="header">
             <h1>🫀 Virtual Cardiology</h1>
             <p>Heart Failure Clinic - Patient Monitoring</p>
@@ -276,6 +310,28 @@
             </div>
         </div>
     </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a href="../index.html" class="footer__logo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+          BMore Cardiology
+        </a>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <a href="../index.html">Home</a>
+          <a href="../topics.html">Topics</a>
+          <a href="../cardiac-longevity.html">Cardiac Longevity</a>
+          <a href="../thoughts-of-the-week.html">Thoughts</a>
+          <a href="../app/">App</a>
+          <a href="../about.html">About</a>
+        </nav>
+        <div class="footer__divider"></div>
+        <p class="footer__copy">© 2026 BMore Cardiology | Dr. Jeremy Pollock, MD, FACC</p>
+        <p class="footer__disclaimer">This website is for educational purposes only and does not constitute medical advice. Always consult your physician for medical concerns. In an emergency, call 911.</p>
+      </div>
+    </div>
+  </footer>
 
     <script>
         // Set current datetime
@@ -496,5 +552,6 @@
         updateDashboard();
         updateHistory();
     </script>
+  <script src="../js/main.js"></script>
 </body>
 </html>

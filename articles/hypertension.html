@@ -10,19 +10,21 @@
 </head>
 <body>
 
-  <nav class="nav">
+  <nav class="nav" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="../index.html" class="nav__logo">
         <svg class="nav__logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
         BMore Cardiology
       </a>
-      <ul class="nav__links">
+      <ul class="nav__links" id="primary-navigation">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="../topics.html" class="active">Topics</a></li>
+        <li><a href="../topics.html" class="active" aria-current="location">Topics</a></li>
+        <li><a href="../cardiac-longevity.html">Cardiac Longevity</a></li>
+        <li><a href="../thoughts-of-the-week.html">Thoughts</a></li>
+        <li><a href="../app/">App</a></li>
         <li><a href="../about.html">About</a></li>
-        <li><a href="../contact.html">Contact</a></li>
       </ul>
-      <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -422,11 +424,13 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
           BMore Cardiology
         </a>
-        <nav class="footer__links">
+        <nav class="footer__links" aria-label="Footer navigation">
           <a href="../index.html">Home</a>
           <a href="../topics.html">Topics</a>
+          <a href="../cardiac-longevity.html">Cardiac Longevity</a>
+          <a href="../thoughts-of-the-week.html">Thoughts</a>
+          <a href="../app/">App</a>
           <a href="../about.html">About</a>
-          <a href="../contact.html">Contact</a>
         </nav>
         <div class="footer__divider"></div>
         <p class="footer__copy">© 2026 BMore Cardiology | Dr. Jeremy Pollock, MD, FACC</p>
