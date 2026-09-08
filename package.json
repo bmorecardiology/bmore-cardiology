@@ -1,0 +1,11 @@
+{
+  "name": "bmore-cardiology",
+  "private": true,
+  "scripts": {
+    "test": "node --test qa/tracker.test.cjs",
+    "check:browser": "node qa/browser-check.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
