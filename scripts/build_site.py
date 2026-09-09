@@ -65,6 +65,9 @@ def write(path,text):
 
 def article(p):
     path=p['path'];sections=p['sections']
+    updated=p.get('updated',UPDATED)
+    updated_date=date.fromisoformat(updated)
+    display_date=f'{updated_date:%B} {updated_date.day}, {updated_date.year}'
     toc=''.join(f'<li><a href="#{sid}">{escape(title)}</a></li>' for sid,title,_ in sections)
     tools=f'<button class="text-button print-page" type="button">Print this guide</button>'
     if p['download']:
@@ -73,7 +76,7 @@ def article(p):
     if p.get('reviewed_by') and p.get('reviewed_on'):
         reviewed=f'<p class="review-line">Reviewed by {escape(p["reviewed_by"])} on <time datetime="{p["reviewed_on"]}">{p["reviewed_on"]}</time>.</p>'
     body=hero(p['title'],p['summary'],p['category'])+f'''<div class="container guide-layout"><article class="guide-content">
-<p class="review-line">Updated <time datetime="{UPDATED}">{DISPLAY_DATE}</time></p>{reviewed}<div class="guide-tools">{tools}</div>
+<p class="review-line">Updated <time datetime="{updated}">{display_date}</time></p>{reviewed}<div class="guide-tools">{tools}</div>
 <aside class="takeaway"><h2>Start here</h2><p>{escape(p['summary'])}</p></aside>
 {''.join('<section id="'+sid+'"><h2>'+escape(title)+'</h2>'+html+'</section>' for sid,title,html in sections)}
 <section id="questions"><h2>Questions for your next visit</h2><ul>{''.join('<li>'+escape(q)+'</li>' for q in p['questions'])}</ul></section>
@@ -85,11 +88,13 @@ def article(p):
 def build():
     for p in PAGES:article(p)
     topics=[p for p in PAGES if p['path'].startswith('articles/')]
+    exercise=[p for p in topics if p['category']=='Exercise and recovery']
+    conditions=[p for p in topics if p['category']!='Exercise and recovery']
     tests=[p for p in PAGES if p['path'].startswith('tests/')]
     notes=[p for p in PAGES if p['path'].startswith('blog/')]
     path='topics.html'
-    body=hero('Cardiology Topics','Find a clear explanation and a practical next step.')+'<section class="section"><div class="container"><h2>Conditions and prevention</h2>'+cards(path,topics[:7])+'<h2 class="section-spacer">Exercise and recovery</h2>'+cards(path,topics[7:])+'<div class="takeaway"><h2>Have a test coming up?</h2><p><a href="tests/index.html">Explore the test guides and printable summaries.</a></p></div></div></section>'
-    write(path,shell(path,'Cardiology Topics','Patient guides to heart conditions, prevention, exercise and recovery.',body))
+    body=hero('Cardiology Topics','Find a clear explanation and a practical next step.')+'<section class="section"><div class="container"><h2>Conditions, symptoms and prevention</h2>'+cards(path,conditions)+'<h2 class="section-spacer">Exercise and recovery</h2>'+cards(path,exercise)+'<div class="takeaway"><h2>Have a test coming up?</h2><p><a href="tests/index.html">Explore the test guides and printable summaries.</a></p></div></div></section>'
+    write(path,shell(path,'Cardiology Topics','Patient guides to heart symptoms, conditions, prevention, exercise and recovery.',body))
     path='tests/index.html'
     body=hero('Understanding Your Tests','Why it was ordered, what the results mean, and what to ask next.')+'<section class="section"><div class="container">'+cards(path,tests)+'<aside class="takeaway"><h2>Before your appointment</h2><p>Follow the instructions from your testing center. Ask which medicines to take, what preparation is needed, and how you will receive results. The one-page summaries can help you prepare questions.</p></aside></div></section>'
     write(path,shell(path,'Understanding Your Tests','Echo, rhythm monitor, calcium score, stress test and coronary CTA guides with printable summaries.',body))
